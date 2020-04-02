@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
         v.customize ["modifyvm", :id, "--memory", opts[:RAM]]
         v.customize ["modifyvm", :id, "--cpus", opts[:CPU]]
       end
-      config.vm.provision "shell", inline: $provisionAll 
+      config.vm.provision "shell", inline: $provisionAll, env: {"IPADDR" => opts[:ip]}
       if opts[:type] == "master"
         config.vm.provision "shell", inline: $provisionMaster
       else
@@ -66,6 +66,7 @@ EOF
 setenforce 0
 sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+echo  "KUBELET_EXTRA_ARGS=--node-ip=$IPADDR" > /etc/sysconfig/kubelet
 systemctl enable --now kubelet
 echo "Disable swap"
 swapoff -a
