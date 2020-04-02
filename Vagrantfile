@@ -10,8 +10,7 @@ servers = [
   {
     :name => "worker1",
     :type => "worker",
-    :box => "robbof/centos7-k8s",
-    :version => "0.7.0",
+    :box => "centos/7",
     :ip => "10.0.0.11",
     :RAM => "3072",
     :CPU => "2"
@@ -19,8 +18,7 @@ servers = [
   {
     :name => "worker2",
     :type => "worker",
-    :box => "robbof/centos7-k8s",
-    :version => "0.7.0",
+    :box => "centos/7",
     :ip => "10.0.0.12",
     :RAM => "3072",
     :CPU => "2"

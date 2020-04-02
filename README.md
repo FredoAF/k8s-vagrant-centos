@@ -5,11 +5,7 @@
 - Kubeadm is used to create cluster, and then workers joined automatically
 - to run: `vagrant up`
 - Then copy the last command to run kubectl commands against the cluster: `kubectl --kubeconfig config get nodes`
-- ```
-NAME      STATUS   ROLES    AGE     VERSION
-master    Ready    master   7m34s   v1.18.0
-worker1   Ready    <none>   3m28s   v1.18.0
-```
+
 ## troubleshooting
 - the default centos7 doesn't have virtualbox guest additions installed
 - so need: `vagrant plugin install vagrant-vbguest` on your machine for the synced folders to work
